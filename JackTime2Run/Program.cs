@@ -2,6 +2,7 @@
  * 功能描述:自动定时服务
  * 创 建 人:胡庆杰
  * 日    期:2017-2-8
+ * github:https://github.com/jackletter/JackTime2Run
  * 说明:
  * 安装：JackTime2Run.exe install
  * 启动：JackTime2Run.exe start
