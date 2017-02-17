@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // 有关程序集的常规信息通过以下
 // 特性集控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("JackTime2Run[https://github.com/jackletter/JackTime2Run]")]
+[assembly: AssemblyTitle("JackTime2Run")]
 [assembly: AssemblyDescription("定时调用dll/exe(c#)/cs文件")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("JACKOA")]
