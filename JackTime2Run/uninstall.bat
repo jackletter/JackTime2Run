@@ -1,0 +1,3 @@
+JackTime2Run uninstall
+sc delete JackTime2Run
+pause

@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JackTime2Run", "JackTime2Run\JackTime2Run.csproj", "{99FA5D65-5582-437F-8F9E-75BE873C18F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manager", "Manager\Manager.csproj", "{7D95C492-4915-4883-8C77-5D2821978E69}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{99FA5D65-5582-437F-8F9E-75BE873C18F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99FA5D65-5582-437F-8F9E-75BE873C18F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99FA5D65-5582-437F-8F9E-75BE873C18F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99FA5D65-5582-437F-8F9E-75BE873C18F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D95C492-4915-4883-8C77-5D2821978E69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D95C492-4915-4883-8C77-5D2821978E69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D95C492-4915-4883-8C77-5D2821978E69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D95C492-4915-4883-8C77-5D2821978E69}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

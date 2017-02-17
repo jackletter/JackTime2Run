@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/JackTime2Run" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/JackTime2Run" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="ArrayOfJackJob">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="JackJob" nillable="true" type="tns:JackJob" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfJackJob" nillable="true" type="tns:ArrayOfJackJob" />
+  <xs:complexType name="JackJob">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Cron" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Enable" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="JobType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LogWhen" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Method" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NextDate" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Paras" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element minOccurs="0" name="SearchPath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SrcCodeFilePath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TypeName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="JackJob" nillable="true" type="tns:JackJob" />
+</xs:schema>

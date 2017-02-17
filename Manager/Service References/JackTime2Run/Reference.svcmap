@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="efb41be3-2593-43df-848a-06649aefbdfa" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="net.pipe://localhost/JackTime2Run/Manage/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="56583bd1-9a4f-4a91-b3af-ddd0c72924a4" SourceId="1" SourceUrl="net.pipe://localhost/JackTime2Run/Manage/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="e4576c85-a52b-4d00-bc4a-8129dec2fc77" SourceId="1" SourceUrl="net.pipe://localhost/JackTime2Run/Manage/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="1384a357-ca0a-41f6-98ee-798025a40373" SourceId="1" SourceUrl="net.pipe://localhost/JackTime2Run/Manage/mex" />
+    <MetadataFile FileName="JackTime2Run.xsd" MetadataType="Schema" ID="6a598a8e-d31e-4f42-b3fc-b7b74b8fc5f1" SourceId="1" SourceUrl="net.pipe://localhost/JackTime2Run/Manage/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="0589ca02-ecea-40fb-8225-2822b19bf15d" SourceId="1" SourceUrl="net.pipe://localhost/JackTime2Run/Manage/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

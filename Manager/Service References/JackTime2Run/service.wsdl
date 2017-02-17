@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="NamePipeSrv" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="NetNamedPipeBinding_NamePipeSrv_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1">
+        </msb:BinaryEncoding>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256>
+                </sp:Basic256>
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict>
+                </sp:Strict>
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing>
+        </wsaw:UsingAddressing>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/JackTime2Run" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="NamePipeSrv_GetAllJobs_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllJobs" />
+  </wsdl:message>
+  <wsdl:message name="NamePipeSrv_GetAllJobs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllJobsResponse" />
+  </wsdl:message>
+  <wsdl:message name="NamePipeSrv_EnableJob_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnableJob" />
+  </wsdl:message>
+  <wsdl:message name="NamePipeSrv_EnableJob_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EnableJobResponse" />
+  </wsdl:message>
+  <wsdl:message name="NamePipeSrv_DisableJob_InputMessage">
+    <wsdl:part name="parameters" element="tns:DisableJob" />
+  </wsdl:message>
+  <wsdl:message name="NamePipeSrv_DisableJob_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DisableJobResponse" />
+  </wsdl:message>
+  <wsdl:message name="NamePipeSrv_RemoveJob_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveJob" />
+  </wsdl:message>
+  <wsdl:message name="NamePipeSrv_RemoveJob_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveJobResponse" />
+  </wsdl:message>
+  <wsdl:message name="NamePipeSrv_AddJob_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddJob" />
+  </wsdl:message>
+  <wsdl:message name="NamePipeSrv_AddJob_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddJobResponse" />
+  </wsdl:message>
+  <wsdl:message name="NamePipeSrv_UpdateJob_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateJob" />
+  </wsdl:message>
+  <wsdl:message name="NamePipeSrv_UpdateJob_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateJobResponse" />
+  </wsdl:message>
+  <wsdl:portType name="NamePipeSrv">
+    <wsdl:operation name="GetAllJobs">
+      <wsdl:input wsaw:Action="http://tempuri.org/NamePipeSrv/GetAllJobs" message="tns:NamePipeSrv_GetAllJobs_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/NamePipeSrv/GetAllJobsResponse" message="tns:NamePipeSrv_GetAllJobs_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EnableJob">
+      <wsdl:input wsaw:Action="http://tempuri.org/NamePipeSrv/EnableJob" message="tns:NamePipeSrv_EnableJob_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/NamePipeSrv/EnableJobResponse" message="tns:NamePipeSrv_EnableJob_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DisableJob">
+      <wsdl:input wsaw:Action="http://tempuri.org/NamePipeSrv/DisableJob" message="tns:NamePipeSrv_DisableJob_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/NamePipeSrv/DisableJobResponse" message="tns:NamePipeSrv_DisableJob_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveJob">
+      <wsdl:input wsaw:Action="http://tempuri.org/NamePipeSrv/RemoveJob" message="tns:NamePipeSrv_RemoveJob_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/NamePipeSrv/RemoveJobResponse" message="tns:NamePipeSrv_RemoveJob_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddJob">
+      <wsdl:input wsaw:Action="http://tempuri.org/NamePipeSrv/AddJob" message="tns:NamePipeSrv_AddJob_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/NamePipeSrv/AddJobResponse" message="tns:NamePipeSrv_AddJob_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateJob">
+      <wsdl:input wsaw:Action="http://tempuri.org/NamePipeSrv/UpdateJob" message="tns:NamePipeSrv_UpdateJob_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/NamePipeSrv/UpdateJobResponse" message="tns:NamePipeSrv_UpdateJob_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NetNamedPipeBinding_NamePipeSrv" type="tns:NamePipeSrv">
+    <wsp:PolicyReference URI="#NetNamedPipeBinding_NamePipeSrv_policy">
+    </wsp:PolicyReference>
+    <soap12:binding transport="http://schemas.microsoft.com/soap/named-pipe" />
+    <wsdl:operation name="GetAllJobs">
+      <soap12:operation soapAction="http://tempuri.org/NamePipeSrv/GetAllJobs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnableJob">
+      <soap12:operation soapAction="http://tempuri.org/NamePipeSrv/EnableJob" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DisableJob">
+      <soap12:operation soapAction="http://tempuri.org/NamePipeSrv/DisableJob" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveJob">
+      <soap12:operation soapAction="http://tempuri.org/NamePipeSrv/RemoveJob" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddJob">
+      <soap12:operation soapAction="http://tempuri.org/NamePipeSrv/AddJob" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateJob">
+      <soap12:operation soapAction="http://tempuri.org/NamePipeSrv/UpdateJob" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="NamePipeSrv">
+    <wsdl:port name="NetNamedPipeBinding_NamePipeSrv" binding="tns:NetNamedPipeBinding_NamePipeSrv">
+      <soap12:address location="net.pipe://localhost/JackTime2Run/Manage" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.pipe://localhost/JackTime2Run/Manage</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Spn>host/JACKPC</Spn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
