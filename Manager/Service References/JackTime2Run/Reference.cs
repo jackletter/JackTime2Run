@@ -289,6 +289,12 @@ namespace Manager.JackTime2Run {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/NamePipeSrv/UpdateJob", ReplyAction="http://tempuri.org/NamePipeSrv/UpdateJobResponse")]
         System.Threading.Tasks.Task<bool> UpdateJobAsync(Manager.JackTime2Run.JackJob job);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/NamePipeSrv/TriJob", ReplyAction="http://tempuri.org/NamePipeSrv/TriJobResponse")]
+        bool TriJob(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/NamePipeSrv/TriJob", ReplyAction="http://tempuri.org/NamePipeSrv/TriJobResponse")]
+        System.Threading.Tasks.Task<bool> TriJobAsync(string name);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -364,6 +370,14 @@ namespace Manager.JackTime2Run {
         
         public System.Threading.Tasks.Task<bool> UpdateJobAsync(Manager.JackTime2Run.JackJob job) {
             return base.Channel.UpdateJobAsync(job);
+        }
+        
+        public bool TriJob(string name) {
+            return base.Channel.TriJob(name);
+        }
+        
+        public System.Threading.Tasks.Task<bool> TriJobAsync(string name) {
+            return base.Channel.TriJobAsync(name);
         }
     }
 }
