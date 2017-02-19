@@ -210,7 +210,7 @@ namespace Manager
                 JackTime2Run.JackJob[] tasks = client.GetAllJobs();
                 if (tasks == null)
                 {
-                    MessageBox.Show("拉去当前任务计划失败,服务异常,请查看日志[" + AppDomain.CurrentDomain.BaseDirectory + "log\\SrvManage" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".log]", "服务异常", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("拉取当前任务计划失败,服务异常,请查看日志[" + AppDomain.CurrentDomain.BaseDirectory + "log\\SrvManage" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".log]", "服务异常", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     checkBox1.Checked = false;
                     return new List<JackTime2Run.JackJob>();
                 }
@@ -220,7 +220,7 @@ namespace Manager
             {
                 if (ex is System.ServiceModel.EndpointNotFoundException)
                 {
-                    MessageBox.Show("拉去当前任务计划失败,请检查是否安装并启动了服务JackTime2Run!", "连接失败", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("拉取当前任务计划失败,请检查是否安装并启动了服务JackTime2Run!", "连接失败", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
@@ -260,7 +260,7 @@ namespace Manager
             {
                 if (dataGridView1.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
                 {
-                    string name = (dataGridView1.Rows[e.RowIndex].Cells[9].Value ?? "").ToString();
+                    string name = (dataGridView1.Rows[e.RowIndex].Cells[6].Value ?? "").ToString();
                     string value = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
                     //这里可以编写你需要的任意关于按钮事件的操作~
                     try
@@ -308,6 +308,17 @@ namespace Manager
                             DataTransfer.job = jobs[index - 1];
                             new JobEdit().ShowDialog();
                             Refresh();
+                        }
+                        else if (value == "执行一次")
+                        {
+                            if (MessageBox.Show("是否临时执行任务:" + name + "?", "临时执行任务:" + name, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                            {
+                                JackTime2Run.NamePipeSrvClient client = new JackTime2Run.NamePipeSrvClient();
+                                if (!client.TriJob(name))
+                                {
+                                    MessageBox.Show("执行失败,服务异常,请查看日志[" + AppDomain.CurrentDomain.BaseDirectory + "log\\SrvManage" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".log]", "服务异常", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                };
+                            }
                         }
                     }
                     catch (Exception ex)

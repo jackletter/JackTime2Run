@@ -23,7 +23,29 @@ namespace JackTime2Run
             {
                 System.Configuration.ConfigurationManager.GetSection("JackTime2RunJobs");
                 JackJob[] jobs = new JackJob[JobHelper.Jobs.Count];
-                JobHelper.Jobs.CopyTo(jobs);
+                for (int i = 0; i < JobHelper.Jobs.Count; i++)
+                {
+                    jobs[i] = new JackJob()
+                    {
+                        Name = JobHelper.Jobs[i].Name,
+                        Cron = JobHelper.Jobs[i].Cron,
+                        LogWhen = JobHelper.Jobs[i].LogWhen,
+                        JobType = JobHelper.Jobs[i].JobType,
+                        SearchPath = JobHelper.Jobs[i].SearchPath,
+                        TypeName = JobHelper.Jobs[i].TypeName,
+                        SrcCodeFilePath = JobHelper.Jobs[i].SrcCodeFilePath,
+                        Method = JobHelper.Jobs[i].Method,
+                        Enable = JobHelper.Jobs[i].Enable,
+                        LastDate = JobHelper.Jobs[i].LastDate,
+                        NextDate = JobHelper.Jobs[i].NextDate,
+                        State = JobHelper.Jobs[i].State
+                    };
+                    jobs[i].Paras = new List<string>();
+                    for (int j = 0; j < JobHelper.Jobs[i].Paras.Count; j++)
+                    {
+                        jobs[i].Paras.Add(JobHelper.Jobs[i].Paras[j]);
+                    }
+                }
                 for (int i = 0; i < jobs.Length; i++)
                 {
                     //转化日志类型
@@ -307,6 +329,35 @@ namespace JackTime2Run
             catch (Exception ex)
             {
                 Time2RunSrv.WriteLog("管理端:【Manager】更新任务[" + job.Name + "]失败:" + ex.ToString());
+                return false;
+            }
+        }
+
+        [OperationContract]
+        public bool TriJob(string name)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(name))
+                {
+                    Time2RunSrv.WriteLog("管理端:【Manager】临时执行任务[" + name + "]失败:" + "未发现有效的任务名称！");
+                    return false;
+                }
+                JackJob job = JobHelper.Jobs.FirstOrDefault<JackJob>(i =>
+                {
+                    return i.Name == name;
+                });
+                if (job == null)
+                {
+                    Time2RunSrv.WriteLog("管理端:【Manager】临时执行任务[" + name + "]失败:" + "未发现有效的任务名称！");
+                    return false;
+                }
+                new FullJob().ExeJob(job);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Time2RunSrv.WriteLog("管理端:【Manager】移除任务[" + name + "]失败:" + ex.ToString());
                 return false;
             }
         }

@@ -51,14 +51,11 @@
             this.运行状态 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.上次执行 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.下次执行 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.类全名 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.方法名 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.程序集搜索路径 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.源代码路径 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.启用 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.禁用 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.编辑 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.删除 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.执行一次 = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -121,20 +118,17 @@
             this.运行状态,
             this.上次执行,
             this.下次执行,
-            this.类全名,
-            this.方法名,
-            this.程序集搜索路径,
-            this.源代码路径,
             this.启用,
             this.禁用,
             this.编辑,
-            this.删除});
+            this.删除,
+            this.执行一次});
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView1.Location = new System.Drawing.Point(123, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 40;
-            this.dataGridView1.Size = new System.Drawing.Size(924, 408);
+            this.dataGridView1.Size = new System.Drawing.Size(969, 408);
             this.dataGridView1.TabIndex = 6;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -263,7 +257,7 @@
             // 上次执行
             // 
             this.上次执行.DataPropertyName = "上次执行";
-            this.上次执行.FillWeight = 15F;
+            this.上次执行.FillWeight = 16F;
             this.上次执行.HeaderText = "上次执行";
             this.上次执行.Name = "上次执行";
             this.上次执行.ReadOnly = true;
@@ -271,46 +265,14 @@
             // 下次执行
             // 
             this.下次执行.DataPropertyName = "下次执行";
-            this.下次执行.FillWeight = 15F;
+            this.下次执行.FillWeight = 16F;
             this.下次执行.HeaderText = "下次执行";
             this.下次执行.Name = "下次执行";
             this.下次执行.ReadOnly = true;
             // 
-            // 类全名
-            // 
-            this.类全名.DataPropertyName = "类全名";
-            this.类全名.HeaderText = "类全名";
-            this.类全名.Name = "类全名";
-            this.类全名.ReadOnly = true;
-            this.类全名.Visible = false;
-            // 
-            // 方法名
-            // 
-            this.方法名.DataPropertyName = "方法名";
-            this.方法名.HeaderText = "方法名";
-            this.方法名.Name = "方法名";
-            this.方法名.ReadOnly = true;
-            this.方法名.Visible = false;
-            // 
-            // 程序集搜索路径
-            // 
-            this.程序集搜索路径.DataPropertyName = "程序集搜索路径";
-            this.程序集搜索路径.HeaderText = "程序集";
-            this.程序集搜索路径.Name = "程序集搜索路径";
-            this.程序集搜索路径.ReadOnly = true;
-            this.程序集搜索路径.Visible = false;
-            // 
-            // 源代码路径
-            // 
-            this.源代码路径.DataPropertyName = "源代码路径";
-            this.源代码路径.HeaderText = "源码";
-            this.源代码路径.Name = "源代码路径";
-            this.源代码路径.ReadOnly = true;
-            this.源代码路径.Visible = false;
-            // 
             // 启用
             // 
-            this.启用.FillWeight = 8F;
+            this.启用.FillWeight = 7F;
             this.启用.HeaderText = "启用";
             this.启用.Name = "启用";
             this.启用.ReadOnly = true;
@@ -319,7 +281,7 @@
             // 
             // 禁用
             // 
-            this.禁用.FillWeight = 8F;
+            this.禁用.FillWeight = 7F;
             this.禁用.HeaderText = "禁用";
             this.禁用.Name = "禁用";
             this.禁用.ReadOnly = true;
@@ -328,7 +290,7 @@
             // 
             // 编辑
             // 
-            this.编辑.FillWeight = 8F;
+            this.编辑.FillWeight = 7F;
             this.编辑.HeaderText = "编辑";
             this.编辑.Name = "编辑";
             this.编辑.ReadOnly = true;
@@ -337,18 +299,27 @@
             // 
             // 删除
             // 
-            this.删除.FillWeight = 8F;
+            this.删除.FillWeight = 7F;
             this.删除.HeaderText = "删除";
             this.删除.Name = "删除";
             this.删除.ReadOnly = true;
             this.删除.Text = "删除";
             this.删除.UseColumnTextForButtonValue = true;
             // 
+            // 执行一次
+            // 
+            this.执行一次.FillWeight = 8F;
+            this.执行一次.HeaderText = "执行一次";
+            this.执行一次.Name = "执行一次";
+            this.执行一次.ReadOnly = true;
+            this.执行一次.Text = "执行一次";
+            this.执行一次.UseColumnTextForButtonValue = true;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1051, 425);
+            this.ClientSize = new System.Drawing.Size(1093, 427);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -398,14 +369,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn 运行状态;
         private System.Windows.Forms.DataGridViewTextBoxColumn 上次执行;
         private System.Windows.Forms.DataGridViewTextBoxColumn 下次执行;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 类全名;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 方法名;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 程序集搜索路径;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 源代码路径;
         private System.Windows.Forms.DataGridViewButtonColumn 启用;
         private System.Windows.Forms.DataGridViewButtonColumn 禁用;
         private System.Windows.Forms.DataGridViewButtonColumn 编辑;
         private System.Windows.Forms.DataGridViewButtonColumn 删除;
+        private System.Windows.Forms.DataGridViewButtonColumn 执行一次;
     }
 }
 
