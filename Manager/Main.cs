@@ -304,7 +304,7 @@ namespace Manager
                         else if (value == "编辑")
                         {
                             JackTime2Run.NamePipeSrvClient client = new JackTime2Run.NamePipeSrvClient();
-                            int index = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[8].Value.ToString());
+                            int index = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString());
                             DataTransfer.job = jobs[index - 1];
                             new JobEdit().ShowDialog();
                             Refresh();
