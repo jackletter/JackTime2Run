@@ -35,15 +35,6 @@
             this.开启 = new System.Windows.Forms.Button();
             this.停止服务 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.JackTime2Run = new System.Windows.Forms.NotifyIcon(this.components);
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.启动服务ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.暂停服务ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.序号 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.名称 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.类型 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,6 +47,16 @@
             this.编辑 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.删除 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.执行一次 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.JackTime2Run = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.启动服务ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.暂停服务ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -63,7 +64,7 @@
             // 卸载服务
             // 
             this.卸载服务.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.卸载服务.Location = new System.Drawing.Point(7, 385);
+            this.卸载服务.Location = new System.Drawing.Point(7, 353);
             this.卸载服务.Name = "卸载服务";
             this.卸载服务.Size = new System.Drawing.Size(105, 35);
             this.卸载服务.TabIndex = 0;
@@ -96,7 +97,7 @@
             // 停止服务
             // 
             this.停止服务.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.停止服务.Location = new System.Drawing.Point(7, 340);
+            this.停止服务.Location = new System.Drawing.Point(7, 308);
             this.停止服务.Name = "停止服务";
             this.停止服务.Size = new System.Drawing.Size(105, 35);
             this.停止服务.TabIndex = 5;
@@ -128,91 +129,9 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 40;
-            this.dataGridView1.Size = new System.Drawing.Size(969, 408);
+            this.dataGridView1.Size = new System.Drawing.Size(969, 435);
             this.dataGridView1.TabIndex = 6;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // button1
-            // 
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Location = new System.Drawing.Point(7, 84);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(105, 35);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "刷新";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.Location = new System.Drawing.Point(7, 135);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(105, 35);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "添加任务";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // JackTime2Run
-            // 
-            this.JackTime2Run.ContextMenuStrip = this.contextMenuStrip1;
-            this.JackTime2Run.Icon = ((System.Drawing.Icon)(resources.GetObject("JackTime2Run.Icon")));
-            this.JackTime2Run.Text = "JackTime2Run";
-            this.JackTime2Run.Visible = true;
-            this.JackTime2Run.DoubleClick += new System.EventHandler(this.notifyIcon1_DoubleClick);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.启动服务ToolStripMenuItem,
-            this.暂停服务ToolStripMenuItem,
-            this.管理ToolStripMenuItem,
-            this.退出ToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(125, 92);
-            // 
-            // 启动服务ToolStripMenuItem
-            // 
-            this.启动服务ToolStripMenuItem.Name = "启动服务ToolStripMenuItem";
-            this.启动服务ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.启动服务ToolStripMenuItem.Text = "启动服务";
-            this.启动服务ToolStripMenuItem.Click += new System.EventHandler(this.启动服务ToolStripMenuItem_Click);
-            // 
-            // 暂停服务ToolStripMenuItem
-            // 
-            this.暂停服务ToolStripMenuItem.Name = "暂停服务ToolStripMenuItem";
-            this.暂停服务ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.暂停服务ToolStripMenuItem.Text = "停止服务";
-            this.暂停服务ToolStripMenuItem.Click += new System.EventHandler(this.暂停服务ToolStripMenuItem_Click);
-            // 
-            // 管理ToolStripMenuItem
-            // 
-            this.管理ToolStripMenuItem.Name = "管理ToolStripMenuItem";
-            this.管理ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.管理ToolStripMenuItem.Text = "管理";
-            this.管理ToolStripMenuItem.Click += new System.EventHandler(this.管理ToolStripMenuItem_Click);
-            // 
-            // 退出ToolStripMenuItem
-            // 
-            this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
-            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.退出ToolStripMenuItem.Text = "退出";
-            this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.checkBox1.Font = new System.Drawing.Font("宋体", 12F);
-            this.checkBox1.Location = new System.Drawing.Point(12, 40);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(91, 20);
-            this.checkBox1.TabIndex = 9;
-            this.checkBox1.Text = "每秒刷新";
-            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // 序号
             // 
@@ -315,11 +234,105 @@
             this.执行一次.Text = "执行一次";
             this.执行一次.UseColumnTextForButtonValue = true;
             // 
+            // button1
+            // 
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.Location = new System.Drawing.Point(7, 84);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(105, 35);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "刷新";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.Location = new System.Drawing.Point(7, 135);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(105, 35);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "添加任务";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // JackTime2Run
+            // 
+            this.JackTime2Run.ContextMenuStrip = this.contextMenuStrip1;
+            this.JackTime2Run.Icon = ((System.Drawing.Icon)(resources.GetObject("JackTime2Run.Icon")));
+            this.JackTime2Run.Text = "JackTime2Run";
+            this.JackTime2Run.Visible = true;
+            this.JackTime2Run.DoubleClick += new System.EventHandler(this.notifyIcon1_DoubleClick);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.启动服务ToolStripMenuItem,
+            this.暂停服务ToolStripMenuItem,
+            this.管理ToolStripMenuItem,
+            this.退出ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(125, 92);
+            // 
+            // 启动服务ToolStripMenuItem
+            // 
+            this.启动服务ToolStripMenuItem.Name = "启动服务ToolStripMenuItem";
+            this.启动服务ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.启动服务ToolStripMenuItem.Text = "启动服务";
+            this.启动服务ToolStripMenuItem.Click += new System.EventHandler(this.启动服务ToolStripMenuItem_Click);
+            // 
+            // 暂停服务ToolStripMenuItem
+            // 
+            this.暂停服务ToolStripMenuItem.Name = "暂停服务ToolStripMenuItem";
+            this.暂停服务ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.暂停服务ToolStripMenuItem.Text = "停止服务";
+            this.暂停服务ToolStripMenuItem.Click += new System.EventHandler(this.暂停服务ToolStripMenuItem_Click);
+            // 
+            // 管理ToolStripMenuItem
+            // 
+            this.管理ToolStripMenuItem.Name = "管理ToolStripMenuItem";
+            this.管理ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.管理ToolStripMenuItem.Text = "管理";
+            this.管理ToolStripMenuItem.Click += new System.EventHandler(this.管理ToolStripMenuItem_Click);
+            // 
+            // 退出ToolStripMenuItem
+            // 
+            this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.退出ToolStripMenuItem.Text = "退出";
+            this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkBox1.Font = new System.Drawing.Font("宋体", 12F);
+            this.checkBox1.Location = new System.Drawing.Point(12, 40);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(91, 20);
+            this.checkBox1.TabIndex = 9;
+            this.checkBox1.Text = "每秒刷新";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button3.Location = new System.Drawing.Point(28, 409);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(84, 38);
+            this.button3.TabIndex = 10;
+            this.button3.Text = "关于";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1093, 427);
+            this.ClientSize = new System.Drawing.Size(1093, 450);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -374,6 +387,7 @@
         private System.Windows.Forms.DataGridViewButtonColumn 编辑;
         private System.Windows.Forms.DataGridViewButtonColumn 删除;
         private System.Windows.Forms.DataGridViewButtonColumn 执行一次;
+        private System.Windows.Forms.Button button3;
     }
 }
 

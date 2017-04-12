@@ -362,6 +362,12 @@ namespace JackTime2Run
             }
         }
 
+        [OperationContract]
+        public bool TestConn()
+        {
+            return true;
+        }
+
         private XmlElement GeneJobEle(JackJob job, XmlDocument doc)
         {
             XmlElement ele = doc.CreateElement("job");

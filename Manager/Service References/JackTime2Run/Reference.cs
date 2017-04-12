@@ -295,6 +295,12 @@ namespace Manager.JackTime2Run {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/NamePipeSrv/TriJob", ReplyAction="http://tempuri.org/NamePipeSrv/TriJobResponse")]
         System.Threading.Tasks.Task<bool> TriJobAsync(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/NamePipeSrv/TestConn", ReplyAction="http://tempuri.org/NamePipeSrv/TestConnResponse")]
+        bool TestConn();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/NamePipeSrv/TestConn", ReplyAction="http://tempuri.org/NamePipeSrv/TestConnResponse")]
+        System.Threading.Tasks.Task<bool> TestConnAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -378,6 +384,14 @@ namespace Manager.JackTime2Run {
         
         public System.Threading.Tasks.Task<bool> TriJobAsync(string name) {
             return base.Channel.TriJobAsync(name);
+        }
+        
+        public bool TestConn() {
+            return base.Channel.TestConn();
+        }
+        
+        public System.Threading.Tasks.Task<bool> TestConnAsync() {
+            return base.Channel.TestConnAsync();
         }
     }
 }

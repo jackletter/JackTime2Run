@@ -83,6 +83,12 @@
   <wsdl:message name="NamePipeSrv_TriJob_OutputMessage">
     <wsdl:part name="parameters" element="tns:TriJobResponse" />
   </wsdl:message>
+  <wsdl:message name="NamePipeSrv_TestConn_InputMessage">
+    <wsdl:part name="parameters" element="tns:TestConn" />
+  </wsdl:message>
+  <wsdl:message name="NamePipeSrv_TestConn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TestConnResponse" />
+  </wsdl:message>
   <wsdl:portType name="NamePipeSrv">
     <wsdl:operation name="GetAllJobs">
       <wsdl:input wsaw:Action="http://tempuri.org/NamePipeSrv/GetAllJobs" message="tns:NamePipeSrv_GetAllJobs_InputMessage" />
@@ -111,6 +117,10 @@
     <wsdl:operation name="TriJob">
       <wsdl:input wsaw:Action="http://tempuri.org/NamePipeSrv/TriJob" message="tns:NamePipeSrv_TriJob_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/NamePipeSrv/TriJobResponse" message="tns:NamePipeSrv_TriJob_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TestConn">
+      <wsdl:input wsaw:Action="http://tempuri.org/NamePipeSrv/TestConn" message="tns:NamePipeSrv_TestConn_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/NamePipeSrv/TestConnResponse" message="tns:NamePipeSrv_TestConn_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetNamedPipeBinding_NamePipeSrv" type="tns:NamePipeSrv">
@@ -173,6 +183,15 @@
     </wsdl:operation>
     <wsdl:operation name="TriJob">
       <soap12:operation soapAction="http://tempuri.org/NamePipeSrv/TriJob" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestConn">
+      <soap12:operation soapAction="http://tempuri.org/NamePipeSrv/TestConn" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

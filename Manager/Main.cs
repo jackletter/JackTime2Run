@@ -14,6 +14,15 @@ namespace Manager
 {
     public partial class Main : Form
     {
+        static System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
+
+        //正常的图标
+        Icon normal = ((System.Drawing.Icon)(resources.GetObject("JackTime2Run.Icon")));
+        //灰色的图标
+        Icon disabled = ((System.Drawing.Icon)(resources.GetObject("disabled")));
+        //报错的图标
+        Icon error = ((System.Drawing.Icon)(resources.GetObject("error")));
+        string currentIcon = "normal";
         public Main()
         {
             InitializeComponent();
@@ -21,6 +30,10 @@ namespace Manager
 
         private static List<JackTime2Run.JackJob> jobs = new List<JackTime2Run.JackJob>();
 
+        /// <summary>安装服务按钮事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void 安装_Click(object sender, EventArgs e)
         {
             string startBat = AppDomain.CurrentDomain.BaseDirectory + "setup.bat";
@@ -46,11 +59,19 @@ namespace Manager
             }
         }
 
+        /// <summary>开启服务按钮事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void 开启_Click(object sender, EventArgs e)
         {
             StartSrv();
         }
 
+        /// <summary>暂停服务按钮事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void 暂停服务_Click(object sender, EventArgs e)
         {
             string startBat = AppDomain.CurrentDomain.BaseDirectory + "pause.bat";
@@ -75,6 +96,9 @@ namespace Manager
                 catch { }
             }
         }
+
+        /// <summary>开启服务具体方法
+        /// </summary>
         private void StartSrv()
         {
             string startBat = AppDomain.CurrentDomain.BaseDirectory + "start.bat";
@@ -99,6 +123,9 @@ namespace Manager
                 catch { }
             }
         }
+
+        /// <summary>停止服务具体方法
+        /// </summary>
         private void StopSrv()
         {
             string startBat = AppDomain.CurrentDomain.BaseDirectory + "stop.bat";
@@ -124,6 +151,10 @@ namespace Manager
             }
         }
 
+        /// <summary>停止服务按钮事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void 停止服务_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("是否停止服务,停止服务后将不能定时执行任务?", "停止JackTime2Run?", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
@@ -132,6 +163,10 @@ namespace Manager
             }
         }
 
+        /// <summary>卸载服务按钮事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void 卸载服务_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("是否卸载服务,卸载服务后将不能使用定时任务功能?", "卸载JackTime2Run?", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
@@ -160,13 +195,21 @@ namespace Manager
             }
         }
 
+        /// <summary>刷新按钮事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
-            _isPollTask = true;//只是设置为true,交由定时刷洗去判断
+            _isPollTask = true;//只是设置为true,交由定时刷新去判断
         }
 
+        //手动点击刷新按钮的标志,为true时代表手动触发了刷新按钮(在执行完手动刷新后自动置为false)
         private bool _isPollTask = false;
-        private void Refresh()
+
+        /// <summary>刷新定时任务列表方法
+        /// </summary>
+        private new void Refresh()
         {
             jobs = GetAllTask();
             DataTable dt = CreateDT(jobs);
@@ -202,12 +245,28 @@ namespace Manager
             return dt;
         }
 
+        //用于循环调用wcf服务的客户端
+        JackTime2Run.NamePipeSrvClient cycle_client = new JackTime2Run.NamePipeSrvClient();
+
+        /// <summary>获取完整的任务列表
+        /// </summary>
+        /// <returns></returns>
         private List<JackTime2Run.JackJob> GetAllTask()
         {
-            JackTime2Run.NamePipeSrvClient client = new JackTime2Run.NamePipeSrvClient();
+            if (cycle_client.State != System.ServiceModel.CommunicationState.Opened)
+            {
+                cycle_client.Open();
+            }
             try
             {
-                JackTime2Run.JackJob[] tasks = client.GetAllJobs();
+                JackTime2Run.JackJob[] tasks = cycle_client.GetAllJobs();
+                //client.Close();
+                //成功返回结果,图标变正常
+                if (currentIcon == "disabled")
+                {
+                    JackTime2Run.Icon = normal;
+                    currentIcon = "normal";
+                }
                 if (tasks == null)
                 {
                     MessageBox.Show("拉取当前任务计划失败,服务异常,请查看日志[" + AppDomain.CurrentDomain.BaseDirectory + "log\\SrvManage" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".log]", "服务异常", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -226,7 +285,17 @@ namespace Manager
                 {
                     MessageBox.Show(ex.ToString());
                 }
-                checkBox1.Checked = false;
+
+                this.BeginInvoke((Action)(() =>
+                {
+                    //出现异常,图标变灰色
+                    if (currentIcon == "normal")
+                    {
+                        JackTime2Run.Icon = disabled;
+                        currentIcon = "disabled";
+                    }
+                    checkBox1.Checked = false;
+                }));
                 return new List<JackTime2Run.JackJob>();
             }
         }
@@ -242,18 +311,49 @@ namespace Manager
                 {
                     if (checkBox1.Checked)
                     {
+                        //如果选中了每秒刷新复选框就直接刷新
                         Refresh();
                     }
                     else if (_isPollTask)
                     {
+                        //如果是手动点击的刷新按钮也刷新
                         _isPollTask = false;
                         Refresh();
+                    }
+                    else
+                    {
+                        //如果既没有选中每秒刷新也没有指定手动刷新就只进行连通后台服务的测试
+                        try
+                        {
+                            if (cycle_client.State != System.ServiceModel.CommunicationState.Opened)
+                            {
+                                cycle_client.Open();
+                            }
+                            cycle_client.TestConn();
+                            if (currentIcon == "disabled")
+                            {
+                                JackTime2Run.Icon = normal;
+                                currentIcon = "normal";
+                            }
+                        }
+                        catch
+                        {
+                            if (currentIcon == "normal")
+                            {
+                                JackTime2Run.Icon = disabled;
+                                currentIcon = "disabled";
+                            }
+                        }
                     }
                     System.Threading.Thread.Sleep(1000);
                 }
             });
         }
 
+        /// <summary>单元格点击事件，启用、禁用、编辑以及删除功能代码
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -262,48 +362,64 @@ namespace Manager
                 {
                     string name = (dataGridView1.Rows[e.RowIndex].Cells[6].Value ?? "").ToString();
                     string value = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-                    //这里可以编写你需要的任意关于按钮事件的操作~
+                    //这里可以编写你需要的任意关于按钮事件的操作
+                    JackTime2Run.NamePipeSrvClient client = null;
                     try
                     {
+                        client = new JackTime2Run.NamePipeSrvClient();
                         if (value == "禁用")
                         {
                             if (MessageBox.Show("是否禁用任务:" + name + "?", "禁用任务:" + name, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                             {
-                                JackTime2Run.NamePipeSrvClient client = new JackTime2Run.NamePipeSrvClient();
-                                if (!client.DisableJob(name))
+                                Task.Factory.StartNew(() =>
                                 {
-                                    MessageBox.Show("执行失败,服务异常,请查看日志[" + AppDomain.CurrentDomain.BaseDirectory + "log\\SrvManage" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".log]", "服务异常", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                };
-                                Refresh();
+                                    if (!client.DisableJob(name))
+                                    {
+                                        this.Invoke((Action)(() =>
+                                        {
+                                            MessageBox.Show("执行失败,服务异常,请查看日志[" + AppDomain.CurrentDomain.BaseDirectory + "log\\SrvManage" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".log]", "服务异常", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                            Refresh();
+                                        }));
+                                    };
+                                });
                             }
                         }
                         else if (value == "启用")
                         {
                             if (MessageBox.Show("是否启用任务:" + name + "?", "启用任务:" + name, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                             {
-                                JackTime2Run.NamePipeSrvClient client = new JackTime2Run.NamePipeSrvClient();
-                                if (!client.EnableJob(name))
+                                Task.Factory.StartNew(() =>
                                 {
-                                    MessageBox.Show("执行失败,服务异常,请查看日志[" + AppDomain.CurrentDomain.BaseDirectory + "log\\SrvManage" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".log]", "服务异常", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                };
-                                Refresh();
+                                    if (!client.EnableJob(name))
+                                    {
+                                        this.Invoke((Action)(() =>
+                                        {
+                                            MessageBox.Show("执行失败,服务异常,请查看日志[" + AppDomain.CurrentDomain.BaseDirectory + "log\\SrvManage" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".log]", "服务异常", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                            Refresh();
+                                        }));
+                                    };
+                                });
                             }
                         }
                         else if (value == "删除")
                         {
                             if (MessageBox.Show("是否删除任务:" + name + "?", "删除任务:" + name, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                             {
-                                JackTime2Run.NamePipeSrvClient client = new JackTime2Run.NamePipeSrvClient();
-                                if (!client.RemoveJob(name))
+                                Task.Factory.StartNew(() =>
                                 {
-                                    MessageBox.Show("执行失败,服务异常,请查看日志[" + AppDomain.CurrentDomain.BaseDirectory + "log\\SrvManage" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".log]", "服务异常", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                };
-                                Refresh();
+                                    if (!client.RemoveJob(name))
+                                    {
+                                        this.Invoke((Action)(() =>
+                                        {
+                                            MessageBox.Show("执行失败,服务异常,请查看日志[" + AppDomain.CurrentDomain.BaseDirectory + "log\\SrvManage" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".log]", "服务异常", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                            Refresh();
+                                        }));
+                                    };
+                                });
                             }
                         }
                         else if (value == "编辑")
                         {
-                            JackTime2Run.NamePipeSrvClient client = new JackTime2Run.NamePipeSrvClient();
                             int index = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString());
                             DataTransfer.job = jobs[index - 1];
                             new JobEdit().ShowDialog();
@@ -313,11 +429,16 @@ namespace Manager
                         {
                             if (MessageBox.Show("是否临时执行任务:" + name + "?", "临时执行任务:" + name, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                             {
-                                JackTime2Run.NamePipeSrvClient client = new JackTime2Run.NamePipeSrvClient();
-                                if (!client.TriJob(name))
+                                Task.Factory.StartNew(() =>
                                 {
-                                    MessageBox.Show("执行失败,服务异常,请查看日志[" + AppDomain.CurrentDomain.BaseDirectory + "log\\SrvManage" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".log]", "服务异常", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                };
+                                    if (!client.TriJob(name))
+                                    {
+                                        this.Invoke((Action)(() =>
+                                        {
+                                            MessageBox.Show("执行失败,服务异常,请查看日志[" + AppDomain.CurrentDomain.BaseDirectory + "log\\SrvManage" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".log]", "服务异常", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                        }));
+                                    };
+                                });
                             }
                         }
                     }
@@ -332,16 +453,28 @@ namespace Manager
                             MessageBox.Show("执行失败,失败信息:" + ex.ToString(), "执行失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
+                    finally
+                    {
+                        client.Close();
+                    }
                 }
             }
         }
 
+        /// <summary>添加任务按钮事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
             DataTransfer.job = null;
             new JobEdit().ShowDialog();
         }
 
+        /// <summary>通知图标双击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void notifyIcon1_DoubleClick(object sender, EventArgs e)
         {
             this.Show();
@@ -353,27 +486,51 @@ namespace Manager
             this.Hide();
         }
 
+        /// <summary>通知图标右键退出事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             System.Environment.Exit(System.Environment.ExitCode);
         }
 
+        /// <summary>通知图标右键管理事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void 管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Show();
         }
 
+        /// <summary>通知图标右键启动服务事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void 启动服务ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             StartSrv();
         }
 
+        /// <summary>通知图标右键暂停服务事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void 暂停服务ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             StopSrv();
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            new About().ShowDialog();
+        }
+
     }
+
+    /// <summary>DataGridView添加双缓冲
+    /// </summary>
     public static class ExtensionMethods
     {
         public static void DoubleBuffered(this DataGridView dgv, bool setting)
