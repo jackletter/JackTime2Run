@@ -9,6 +9,7 @@
   <xs:element name="ArrayOfJackJob" nillable="true" type="tns:ArrayOfJackJob" />
   <xs:complexType name="JackJob">
     <xs:sequence>
+      <xs:element minOccurs="0" name="AppConfig" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Cron" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Enable" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="JobType" nillable="true" type="xs:string" />

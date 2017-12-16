@@ -73,7 +73,7 @@ namespace JackTime2Run
                 Info += "[程序集搜索路径:" + job.SearchPath + "][执行类:" + job.TypeName + "][执行方法:" + job.Method + "]";
                 try
                 {
-                    Hashtable ht = DynamicUtil.MainlUtil.InvokeDll(job.SearchPath, job.TypeName, job.Method, types, paras);
+                    Hashtable ht = DynamicUtil.MainlUtil.InvokeDll(job.SearchPath, job.TypeName, job.Method, types, paras,0,job.AppConfig);
                     if (!(bool)ht["Success"])
                     {
                         Info += "[出错]\r\n" + (ht["Data"] ?? "").ToString();
@@ -110,7 +110,7 @@ namespace JackTime2Run
                 Info += "[程序集搜索路径:" + job.SearchPath + "][编译文件:" + job.SrcCodeFilePath + "][执行类:" + job.TypeName + "][执行方法:" + job.Method + "]";
                 try
                 {
-                    Hashtable ht = DynamicUtil.MainlUtil.InvokeSrc(job.SearchPath, job.SrcCodeFilePath, job.TypeName, job.Method, types, paras);
+                    Hashtable ht = DynamicUtil.MainlUtil.InvokeSrc(job.SearchPath, job.SrcCodeFilePath, job.TypeName, job.Method, types, paras,0,job.AppConfig);
                     if (!(bool)ht["Success"])
                     {
                         Info += "[出错]\r\n" + (ht["Data"] ?? "").ToString();
@@ -147,7 +147,7 @@ namespace JackTime2Run
                 Info += "[程序集搜索路径:" + job.SearchPath + "][加载exe:" + job.TypeName + "]";
                 try
                 {
-                    Hashtable ht = DynamicUtil.MainlUtil.InvokeExe(job.SearchPath, job.TypeName, job.Paras.ToArray<string>());
+                    Hashtable ht = DynamicUtil.MainlUtil.InvokeExe(job.SearchPath, job.TypeName, job.Paras.ToArray<string>(),0,job.AppConfig);
                     if (!(bool)ht["Success"])
                     {
                         Info += "[出错]\r\n" + (ht["Data"] ?? "").ToString();

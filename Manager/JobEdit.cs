@@ -99,6 +99,8 @@ namespace Manager
             job.Cron = txt_cron.Text;
             job.TypeName = txt_typename.Text;
             job.SearchPath = txt_searchpath.Text;
+            job.AppConfig = txt_appconfig.Text;
+            
             job.Method = txt_method.Text;
             job.SrcCodeFilePath = txt_srccodepath.Text;
             job.LogWhen = txt_logwhen.SelectedIndex.ToString();

@@ -32,6 +32,7 @@ namespace JackTime2Run
                         LogWhen = JobHelper.Jobs[i].LogWhen,
                         JobType = JobHelper.Jobs[i].JobType,
                         SearchPath = JobHelper.Jobs[i].SearchPath,
+                        AppConfig = JobHelper.Jobs[i].AppConfig,
                         TypeName = JobHelper.Jobs[i].TypeName,
                         SrcCodeFilePath = JobHelper.Jobs[i].SrcCodeFilePath,
                         Method = JobHelper.Jobs[i].Method,
@@ -377,6 +378,7 @@ namespace JackTime2Run
             ele.Attributes.Append(CreateAttr(doc, "jobtype", job.JobType));
             ele.Attributes.Append(CreateAttr(doc, "searchpath", job.SearchPath));
             ele.Attributes.Append(CreateAttr(doc, "srccodepath", job.SrcCodeFilePath));
+            ele.Attributes.Append(CreateAttr(doc, "appconfig", job.AppConfig));
             ele.Attributes.Append(CreateAttr(doc, "typename", job.TypeName));
             ele.Attributes.Append(CreateAttr(doc, "method", job.Method));
             ele.Attributes.Append(CreateAttr(doc, "enable", job.Enable));

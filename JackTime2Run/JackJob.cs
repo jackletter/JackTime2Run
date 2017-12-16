@@ -29,6 +29,9 @@ namespace JackTime2Run
         public string SearchPath { set; get; }
 
         [DataMember]
+        public string AppConfig { set; get; }
+
+        [DataMember]
         public string TypeName { set; get; }
 
         [DataMember]

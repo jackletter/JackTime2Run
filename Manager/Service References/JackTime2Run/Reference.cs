@@ -23,6 +23,9 @@ namespace Manager.JackTime2Run {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AppConfigField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CronField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -68,6 +71,19 @@ namespace Manager.JackTime2Run {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string AppConfig {
+            get {
+                return this.AppConfigField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AppConfigField, value) != true)) {
+                    this.AppConfigField = value;
+                    this.RaisePropertyChanged("AppConfig");
+                }
             }
         }
         

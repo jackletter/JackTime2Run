@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="efb41be3-2593-43df-848a-06649aefbdfa" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="7417ee66-dac8-41b0-bcc4-5b27cce686fa" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,11 +22,11 @@
     <MetadataSource Address="net.pipe://localhost/JackTime2Run/Manage/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="56583bd1-9a4f-4a91-b3af-ddd0c72924a4" SourceId="1" SourceUrl="net.pipe://localhost/JackTime2Run/Manage/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="e4576c85-a52b-4d00-bc4a-8129dec2fc77" SourceId="1" SourceUrl="net.pipe://localhost/JackTime2Run/Manage/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="1384a357-ca0a-41f6-98ee-798025a40373" SourceId="1" SourceUrl="net.pipe://localhost/JackTime2Run/Manage/mex" />
-    <MetadataFile FileName="JackTime2Run.xsd" MetadataType="Schema" ID="6a598a8e-d31e-4f42-b3fc-b7b74b8fc5f1" SourceId="1" SourceUrl="net.pipe://localhost/JackTime2Run/Manage/mex" />
-    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="0589ca02-ecea-40fb-8225-2822b19bf15d" SourceId="1" SourceUrl="net.pipe://localhost/JackTime2Run/Manage/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="41a1a6d3-7e7a-4270-932b-39f08c0df968" SourceId="1" SourceUrl="net.pipe://localhost/JackTime2Run/Manage/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="0b1c7c90-a359-42b7-a987-a5a5bbc20c7e" SourceId="1" SourceUrl="net.pipe://localhost/JackTime2Run/Manage/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="cfa1fa05-e207-4892-be7f-ec4e66c99edf" SourceId="1" SourceUrl="net.pipe://localhost/JackTime2Run/Manage/mex" />
+    <MetadataFile FileName="JackTime2Run.xsd" MetadataType="Schema" ID="2d5168f1-cef4-4f74-81e2-58750399bf2b" SourceId="1" SourceUrl="net.pipe://localhost/JackTime2Run/Manage/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="1931a95f-3207-4b19-b15a-c008c21a7cf5" SourceId="1" SourceUrl="net.pipe://localhost/JackTime2Run/Manage/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

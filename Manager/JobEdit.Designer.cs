@@ -53,6 +53,8 @@
             this.参数值 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt_srccodepath = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txt_appconfig = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,7 +82,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("宋体", 12F);
-            this.label3.Location = new System.Drawing.Point(17, 234);
+            this.label3.Location = new System.Drawing.Point(17, 251);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(80, 16);
             this.label3.TabIndex = 2;
@@ -90,7 +92,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("宋体", 12F);
-            this.label4.Location = new System.Drawing.Point(230, 234);
+            this.label4.Location = new System.Drawing.Point(230, 249);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(80, 16);
             this.label4.TabIndex = 3;
@@ -100,7 +102,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("宋体", 12F);
-            this.label5.Location = new System.Drawing.Point(17, 172);
+            this.label5.Location = new System.Drawing.Point(17, 150);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(128, 16);
             this.label5.TabIndex = 4;
@@ -110,7 +112,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("宋体", 12F);
-            this.label6.Location = new System.Drawing.Point(17, 126);
+            this.label6.Location = new System.Drawing.Point(17, 116);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(80, 16);
             this.label6.TabIndex = 5;
@@ -120,7 +122,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("宋体", 12F);
-            this.label7.Location = new System.Drawing.Point(440, 234);
+            this.label7.Location = new System.Drawing.Point(440, 249);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(64, 16);
             this.label7.TabIndex = 6;
@@ -130,7 +132,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("宋体", 12F);
-            this.label8.Location = new System.Drawing.Point(687, 234);
+            this.label8.Location = new System.Drawing.Point(687, 249);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(80, 16);
             this.label8.TabIndex = 7;
@@ -140,7 +142,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("宋体", 12F);
-            this.label9.Location = new System.Drawing.Point(17, 275);
+            this.label9.Location = new System.Drawing.Point(17, 286);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(48, 16);
             this.label9.TabIndex = 8;
@@ -198,7 +200,7 @@
             // txt_typename
             // 
             this.txt_typename.Font = new System.Drawing.Font("宋体", 12F);
-            this.txt_typename.Location = new System.Drawing.Point(114, 121);
+            this.txt_typename.Location = new System.Drawing.Point(114, 111);
             this.txt_typename.Name = "txt_typename";
             this.txt_typename.Size = new System.Drawing.Size(725, 26);
             this.txt_typename.TabIndex = 15;
@@ -206,7 +208,7 @@
             // txt_searchpath
             // 
             this.txt_searchpath.Font = new System.Drawing.Font("宋体", 12F);
-            this.txt_searchpath.Location = new System.Drawing.Point(161, 167);
+            this.txt_searchpath.Location = new System.Drawing.Point(161, 145);
             this.txt_searchpath.Name = "txt_searchpath";
             this.txt_searchpath.Size = new System.Drawing.Size(678, 26);
             this.txt_searchpath.TabIndex = 16;
@@ -214,7 +216,7 @@
             // txt_method
             // 
             this.txt_method.Font = new System.Drawing.Font("宋体", 12F);
-            this.txt_method.Location = new System.Drawing.Point(507, 228);
+            this.txt_method.Location = new System.Drawing.Point(507, 245);
             this.txt_method.Name = "txt_method";
             this.txt_method.Size = new System.Drawing.Size(164, 26);
             this.txt_method.TabIndex = 17;
@@ -228,7 +230,7 @@
             "一定记录",
             "成功时记录",
             "失败时记录"});
-            this.txt_logwhen.Location = new System.Drawing.Point(114, 229);
+            this.txt_logwhen.Location = new System.Drawing.Point(114, 246);
             this.txt_logwhen.Name = "txt_logwhen";
             this.txt_logwhen.Size = new System.Drawing.Size(110, 24);
             this.txt_logwhen.TabIndex = 18;
@@ -242,7 +244,7 @@
             "动态库",
             "单个cs文件",
             "exe程序"});
-            this.txt_jobtype.Location = new System.Drawing.Point(311, 229);
+            this.txt_jobtype.Location = new System.Drawing.Point(311, 246);
             this.txt_jobtype.Name = "txt_jobtype";
             this.txt_jobtype.Size = new System.Drawing.Size(106, 24);
             this.txt_jobtype.TabIndex = 19;
@@ -255,7 +257,7 @@
             this.txt_enable.Items.AddRange(new object[] {
             "禁用",
             "可用"});
-            this.txt_enable.Location = new System.Drawing.Point(764, 229);
+            this.txt_enable.Location = new System.Drawing.Point(764, 246);
             this.txt_enable.Name = "txt_enable";
             this.txt_enable.Size = new System.Drawing.Size(106, 24);
             this.txt_enable.TabIndex = 20;
@@ -280,7 +282,7 @@
             // txt_srccodepath
             // 
             this.txt_srccodepath.Font = new System.Drawing.Font("宋体", 12F);
-            this.txt_srccodepath.Location = new System.Drawing.Point(161, 198);
+            this.txt_srccodepath.Location = new System.Drawing.Point(161, 179);
             this.txt_srccodepath.Name = "txt_srccodepath";
             this.txt_srccodepath.Size = new System.Drawing.Size(678, 26);
             this.txt_srccodepath.TabIndex = 23;
@@ -289,17 +291,35 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("宋体", 12F);
-            this.label10.Location = new System.Drawing.Point(17, 203);
+            this.label10.Location = new System.Drawing.Point(17, 184);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(96, 16);
             this.label10.TabIndex = 22;
             this.label10.Text = "cs文件路径:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(20, 216);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(179, 12);
+            this.label11.TabIndex = 24;
+            this.label11.Text = "配置文件路径(如 app.config)：";
+            // 
+            // txt_appconfig
+            // 
+            this.txt_appconfig.Location = new System.Drawing.Point(205, 211);
+            this.txt_appconfig.Name = "txt_appconfig";
+            this.txt_appconfig.Size = new System.Drawing.Size(634, 21);
+            this.txt_appconfig.TabIndex = 25;
             // 
             // JobEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(898, 466);
+            this.Controls.Add(this.txt_appconfig);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.txt_srccodepath);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.dataGridView1);
@@ -329,7 +349,7 @@
             this.MinimizeBox = false;
             this.Name = "JobEdit";
             this.Opacity = 0.85D;
-            this.Text = "Form2";
+            this.Text = "编辑任务";
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -363,5 +383,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn 参数值;
         private System.Windows.Forms.TextBox txt_srccodepath;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txt_appconfig;
     }
 }
