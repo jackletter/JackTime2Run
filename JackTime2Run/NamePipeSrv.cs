@@ -175,6 +175,7 @@ namespace JackTime2Run
                     }
                     sec.SectionInformation.SetRawXml(doc.InnerXml);
                     conf.Save(ConfigurationSaveMode.Modified);
+                    Host._srv.ReloadConf();
                     return true;
                 }
             }
@@ -213,6 +214,7 @@ namespace JackTime2Run
                     }
                     sec.SectionInformation.SetRawXml(doc.InnerXml);
                     conf.Save(ConfigurationSaveMode.Modified);
+                    Host._srv.ReloadConf();
                     return true;
                 }
             }
@@ -251,6 +253,7 @@ namespace JackTime2Run
                     }
                     sec.SectionInformation.SetRawXml(doc.InnerXml);
                     conf.Save(ConfigurationSaveMode.Modified);
+                    Host._srv.ReloadConf();
                     return true;
                 }
             }
@@ -283,6 +286,7 @@ namespace JackTime2Run
                     jobs.AppendChild(ele);
                     sec.SectionInformation.SetRawXml(doc.InnerXml);
                     conf.Save(ConfigurationSaveMode.Modified);
+                    Host._srv.ReloadConf();
                     return true;
                 }
             }
@@ -324,6 +328,7 @@ namespace JackTime2Run
                     }
                     sec.SectionInformation.SetRawXml(doc.InnerXml);
                     conf.Save(ConfigurationSaveMode.Modified);
+                    Host._srv.ReloadConf();
                     return true;
                 }
             }

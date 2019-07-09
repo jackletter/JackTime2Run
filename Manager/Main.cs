@@ -253,12 +253,17 @@ namespace Manager
         /// <returns></returns>
         private List<JackTime2Run.JackJob> GetAllTask()
         {
-            if (cycle_client.State != System.ServiceModel.CommunicationState.Opened)
-            {
-                cycle_client.Open();
-            }
             try
             {
+                if (cycle_client.State == System.ServiceModel.CommunicationState.Faulted)
+                {
+                    cycle_client = new JackTime2Run.NamePipeSrvClient();
+                }
+
+                if (cycle_client.State != System.ServiceModel.CommunicationState.Opened)
+                {
+                    cycle_client.Open();
+                }
                 JackTime2Run.JackJob[] tasks = cycle_client.GetAllJobs();
                 //client.Close();
                 //成功返回结果,图标变正常
